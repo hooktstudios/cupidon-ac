@@ -28,11 +28,11 @@ SelectWithAC.prototype = {
 
     this.set(this.$node.val(), this.$node.data('ac-display'));
 
-    this.$node.autocomplete({
+    this.$node.autocomplete($.extend({}, this.settings, {
       source: this.$node.data('ac-url'),
       select: function(event, ui){ return self.ac_select($(this), event, ui); },
       change: self.ac_change,
-    });
+    }));
   },
 
   init_displayer: function(){
