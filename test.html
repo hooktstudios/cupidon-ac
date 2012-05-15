@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Cupidon AC tests</title>
+    <link rel="stylesheet" href="vendor/qunit.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+    <script type="text/javascript" src="vendor/qunit.js"></script>
+    <script type="text/javascript" src="cupidon-ac.js"></script>
+  </head>
+  <body>
+    <script>
+      $(document).ready(function() {
+        var $cupidon2 = $('#cupidon-2');
+        var ac2 = new SelectWithAC($('#cupidon-2'));
+        ac2.init();
+
+        test("init with data-ac-diplay without options", function() {
+          equal($cupidon2.val(), "2", "Input value exepected to be 2");
+        });
+
+      });
+    </script>
+
+
+    <h1 id="qunit-header">Cupidon AC tests</h1>
+    <h2 id="qunit-banner"></h2>
+    <div id="qunit-testrunner-toolbar"></div>
+    <ol id="qunit-tests"></ol>
+    <div id="qunit-fixture-">
+      <div class="cupidon-wrap">
+        <input id="cupidon-1" type="text">
+      </div>
+      <div class="cupidon-wrap">
+        <input id="cupidon-2" type="text" data-ac-display="Sonia" value="2">
+      </div>
+    </div>
+  </body>
+</html>
