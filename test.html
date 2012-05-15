@@ -36,6 +36,9 @@
             selectFirstMatch: function (str) {
               $el.autocomplete('search', str);
               $el.autocomplete('widget').find('.ui-menu-item:first a:first').trigger('mouseenter').trigger('click');
+            },
+            isInputVisible: function () {
+              return $el.is(':visible');
             }
           }
         }
@@ -56,12 +59,15 @@
 
         test("Don't cupidonize on page load when input is partially filled", function() {
           var cup = cupidonize('#input2');
+          deepEqual(cup.isInputVisible(), true, 'Input is visible');
           deepEqual(cup.html(), null, "Blank ac-display and blank value");
 
           var cup = cupidonize('#input3');
+          deepEqual(cup.isInputVisible(), true, 'Input is visible');
           deepEqual(cup.html(), null, "Blank value");
 
           var cup = cupidonize('#input4');
+          deepEqual(cup.isInputVisible(), true, 'Input is visible');
           deepEqual(cup.html(), null, "Blank ac-display");
           deepEqual(cup.value(), '', "Force blank value when ac-display is blank");
         });
@@ -79,6 +85,7 @@
           });
 
           cup.selectFirstMatch('Bo');
+          deepEqual(cup.isInputVisible(), false, 'Input is hidden');
           deepEqual(cup.html(), '<p>Bob</p><a href=\"#\">Edit</a>', 'HTML');
           deepEqual(cup.value(), '6', 'Value');
         });
