@@ -10,16 +10,7 @@
     _create: function () {
       var that = this;
 
-      // Call the user select callback once the one we hooked has finished
-      var select = that.options.select;
-      this._setOption('select', function (event, ui) {
-        console.log(select);
-        if (select && typeof select === 'function') {
-          return that._select.apply(that, [event, ui]) || select.call();
-        } else {
-          return that._select.apply(that, [event, ui]);
-        }
-      });
+      this._setOption('select', this.options.select);
 
       this.options.token = $(this.options.token).
         find('.edit').
@@ -56,13 +47,36 @@
       this.options.token.find('p').html(label);
     },
 
+    _ourSelectAndTheirSelect: function (theirSelect) {
+      var that = this;
+
+      return function (event, ui) {
+        var ourCall = that._select.apply(that, [event, ui]),
+          theirCall;
+
+        if (theirSelect && typeof theirSelect === 'function') {
+          theirCall = theirSelect.call();
+        } else {
+          theirCall = true;
+        }
+
+        return ourCall && theirCall;
+      };
+    },
+
     _select: function (event, ui) {
       this.element.val(ui.item.value);
       this._label(ui.item.label);
     },
 
     _setOption: function (key, value) {
-      return $.ui.autocomplete.prototype._setOption.apply(this, [key, value]);
+      switch(key) {
+        case 'select':
+          this.options.select = this._ourSelectAndTheirSelect(value);
+          break;
+        default:
+          return $.ui.autocomplete.prototype._setOption.apply(this, [key, value]);
+      }
     },
 
     _reset: function () {
