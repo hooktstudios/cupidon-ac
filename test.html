@@ -39,8 +39,8 @@
               this.wrapper().find('a:first').trigger('click');
             },
             selectFirstMatch: function (str) {
-              $el.autocomplete('search', str);
-              $el.autocomplete('widget').find('.ui-menu-item:first a:first').trigger('mouseenter').trigger('click');
+              $el.cupidon('search', str);
+              $el.cupidon('widget').find('.ui-menu-item:first a:first').trigger('mouseenter').trigger('click');
             },
             isInputVisible: function () {
               return $el.is(':visible');
@@ -84,19 +84,15 @@
           deepEqual(cup.value(), '', "Force blank value");
         });
 
-        asyncTest("Cupidonize after select", function() {
+        test("Cupidonize after select", function() {
           var cup = cupidonize('#input1-4', {
             source: [{label: "Anna", value: 5}, {label: "Bob", value: 6}, {label: "Charles", value: 7}]
           });
 
           cup.selectFirstMatch('Bo');
-
-          setTimeout(function () {
-            deepEqual(cup.isInputVisible(), false, 'Input is hidden');
-            deepEqual(cup.html(), '<p>Bob</p><a class="edit" href="#">Edit</a>', 'HTML');
-            deepEqual(cup.value(), '6', 'Value');
-            start();
-          }, 1000);
+          deepEqual(cup.isInputVisible(), false, 'Input is hidden');
+          deepEqual(cup.html(), '<p>Bob</p><a class="edit" href="#">Edit</a>', 'HTML');
+          deepEqual(cup.value(), '6', 'Value');
         });
 
       });
