@@ -27,7 +27,7 @@
 
           return {
             wrapper: function () {
-              return $el.nextAll('.ac-token:visible');
+              return $el.parent().nextAll('.ac-token:visible');
             },
             html: function () {
               return this.wrapper().html();
@@ -84,24 +84,23 @@
           deepEqual(cup.value(), '', "Force blank value");
         });
 
-        test("Cupidonize after select", function() {
+        asyncTest("Cupidonize after select", function() {
           var cup = cupidonize('#input1-4', {
             source: [{label: "Anna", value: 5}, {label: "Bob", value: 6}, {label: "Charles", value: 7}]
           });
 
           cup.selectFirstMatch('Bo');
-          deepEqual(cup.isInputVisible(), false, 'Input is hidden');
-          deepEqual(cup.html(), '<p>Bob</p><a class="edit" href="#">Edit</a>', 'HTML');
-          deepEqual(cup.value(), '6', 'Value');
+
+          setTimeout(function () {
+            deepEqual(cup.isInputVisible(), false, 'Input is hidden');
+            deepEqual(cup.html(), '<p>Bob</p><a class="edit" href="#">Edit</a>', 'HTML');
+            deepEqual(cup.value(), '6', 'Value');
+            start();
+          }, 1000);
         });
 
       });
 
-      $(function() {
-        $('#input0-2').cupidon({
-          source: [{label: "Anna", value: 5}, {label: "Bob", value: 6}, {label: "Charles", value: 7}]
-        });
-      });
     </script>
 
 
@@ -116,8 +115,7 @@
       <input id="input1" type="text" data-ac-token="Test" value="1">
       <input id="input1-2" type="text" data-ac-token="Test" value="1">
       <input id="input1-3" type="text" data-ac-token="Test" value="1">
-      input1-4:
-      <input id="input1-4" type="text" data-ac-token="Test" value="1">
+      <input id="input1-4" type="text" value="">
       <input id="input2" type="text" data-ac-token="" value="">
       <input id="input3" type="text" data-ac-token="Test" value="">
       <input id="input4" type="text" data-ac-token="" value="1">

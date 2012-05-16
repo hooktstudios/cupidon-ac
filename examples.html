@@ -9,7 +9,11 @@
     <script>
       $(function() {
         $('#input1').cupidon({
-          source: [{label: "Anna", value: 5}, {label: "Bob", value: 6}, {label: "Charles", value: 7}]
+          source: [{label: "Anna", value: 5}, {label: "Bob", value: 6}, {label: "Charles", value: 7}],
+        });
+
+        $('#input1').cupidon('option', 'select', function () {
+          console.log("Hello from client's select callback");
         });
 
         $('#input2').cupidon();

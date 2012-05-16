@@ -60,7 +60,7 @@
           theirCall = true;
         }
 
-        return ourCall && theirCall;
+        return ourCall !== false && theirCall !== false;
       };
     },
 
@@ -72,11 +72,10 @@
     _setOption: function (key, value) {
       switch(key) {
         case 'select':
-          this.options.select = this._ourSelectAndTheirSelect(value);
+          value = this._ourSelectAndTheirSelect(value);
           break;
-        default:
-          return $.ui.autocomplete.prototype._setOption.apply(this, [key, value]);
       }
+      $.ui.autocomplete.prototype._setOption.apply(this, [key, value]);
     },
 
     _reset: function () {
