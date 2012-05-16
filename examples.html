@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Cupidon Examples</title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
+    <script type="text/javascript" src="cupidon-ac.js"></script>
+
+    <script>
+      $(function() {
+        $('#input1').cupidon({
+          source: [{label: "Anna", value: 5}, {label: "Bob", value: 6}, {label: "Charles", value: 7}]
+        });
+
+        $('#input2').cupidon();
+        $('#input3').cupidon({changeText: 'I am a button'});
+        $('#input4').cupidon({
+          source: [{label: "Ten", value: 10}, {label: "One hundred", value: 100}, {label: "One thousand", value: 1000}]
+        });
+      });
+    </script>
+
+  </head>
+  <body>
+
+    <h1>Cupidon Examples</h1>
+
+    <input id="input1" type="text" value="">
+    <input id="input2" type="text" data-ac-token="The art of computer programming" value="0-201-03801-3">
+    <input id="input3" type="text" data-ac-token="10$" value="10">
+    <input id="input4" type="text" data-ac-token="One hundred" value="100">
+  </body>
+</html>

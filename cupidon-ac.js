@@ -1,82 +1,81 @@
-function SelectWithAC($node, options){
-  this.$node = $node;
-  this.settings = $.extend({
-    changeText: 'Edit'
-  }, options)
-}
+(function ($) {
+  "use strict";
 
-SelectWithAC.prototype = {
-  init: function(){
-    var self = this;
+  $.widget("ui.cupidon", $.ui.autocomplete, {
+    options: {
+      changeText: 'Edit',
+      token: '<div class="ac-token"><p></p><a class="edit" href="#"></a></div>'
+    },
 
-    // Set up the hidden input
-    this._$hidden = $('<input>', {
-      type: 'hidden',
-      name: this.$node.attr('name'),
-    });
+    _create: function () {
+      var that = this;
 
-    this.$node.removeAttr('name');
-    this.$node.after(this._$hidden)
+      // Call the user select callback once the one we hooked has finished
+      var select = that.options.select;
+      this._setOption('select', function (event, ui) {
+        console.log(select);
+        if (select && typeof select === 'function') {
+          return that._select.apply(that, [event, ui]) || select.call();
+        } else {
+          return that._select.apply(that, [event, ui]);
+        }
+      });
 
-    // Set up the display container
-    this.init_displayer();
+      this.options.token = $(this.options.token).
+        find('.edit').
+          bind('click', function (event) {that._edit.apply(that, [event]);}).
+          html(this.options.changeText).
+          end().
+        hide().
+        insertAfter(this.element);
 
-    this._$displayer.find('a').bind('click', function(e){
-      e.preventDefault();
-      self.set(null, null);
-    });
+      $.ui.autocomplete.prototype._create.apply(this);
+    },
 
-    this.set(this.$node.val(), this.$node.data('ac-display'));
+    _init: function () {
+      var token = this.element.data('ac-token'),
+        value = this.element.val();
 
-    this.$node.autocomplete($.extend({}, this.settings, {
-      source: this.$node.data('ac-url'),
-      select: function(event, ui){ return self.ac_select($(this), event, ui); },
-      change: self.ac_change,
-    }));
-  },
+      if (value !== '' && token && token !== '') {
+        this._label(token);
+      } else {
+        this._reset();
+      }
 
-  init_displayer: function(){
-    var displayer = this.settings.displayer;
+      $.ui.autocomplete.prototype._init.call(this);
+    },
 
-    if(displayer instanceof jQuery || displayer && displayer.nodeType == 1) {
-      this._$displayer = this.$node.siblings().filter(displayer);
+    _edit: function (event) {
+      event.preventDefault();
+      this._reset();
+    },
+
+    _label: function (label) {
+      this.element.wrap('<span style="display: none;"></span>');
+      this.options.token.show();
+      this.options.token.find('p').html(label);
+    },
+
+    _select: function (event, ui) {
+      this.element.val(ui.item.value);
+      this._label(ui.item.label);
+    },
+
+    _setOption: function (key, value) {
+      return $.ui.autocomplete.prototype._setOption.apply(this, [key, value]);
+    },
+
+    _reset: function () {
+      this.options.token.hide();
+      this.element.val('');
+      this.element.removeAttr('data-token');
+      this.element.unwrap();
+    },
+
+    destroy: function () {
+      this.element.unwrap();
+      this.options.token.remove();
+      $.ui.autocomplete.prototype.destroy.call(this);
     }
-    else if(({}).toString.call(displayer) == "[object Function]") {
-      this._$displayer = $(displayer.call());
-    }
-    else {
-      this._$displayer = $('<div class="ac-display"><p></p><a href="#">' + this.settings.changeText + '</a></div>');
-      this._$hidden.after(this._$displayer);
-    }
-  },
-
-  ac_select: function($node, event, ui){
-    this.set(ui.item.value, ui.item.label);
-    return false;
-  },
-
-  set: function(value, label){
-    if(!value) value = '';
-    if(!label) label = '';
-    this.$node.val(label);
-    this._$displayer.find('p').html(label);
-    this._$hidden.val(value);
-    if(value && label) {
-      this.$node.hide();
-      this._$displayer.show();
-    }
-    else {
-      this.$node.show();
-      this._$displayer.hide();
-    }
-  },
-
-  // this refers to the autcompleter element here.
-  ac_change: function(event, ui){
-    // @todo : improve later : autodetect text and set proper value
-    var $this = $(this);
-    $this.val("");
-    $this.data('autocomplete').term = "";
-    return false;
-  },
-}
+  });
+}(jQuery));
