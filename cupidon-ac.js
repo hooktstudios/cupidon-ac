@@ -8,13 +8,13 @@
     },
 
     _create: function () {
-      var that = this;
+      var self = this;
 
       this._setOption('select', this.options.select);
 
       this.options.token = $(this.options.token).
         find('.edit').
-          bind('click', function (event) {that._edit.apply(that, [event]);}).
+          bind('click', function (event) {self._edit.apply(self, [event]);}).
           html(this.options.changeText).
           end().
         hide().
@@ -25,7 +25,7 @@
 
     _init: function () {
       var token = this.element.data('ac-token'),
-        value = this.element.val();
+          value = this.element.val();
 
       if (value !== '' && token && token !== '') {
         this._label(token);
@@ -48,11 +48,11 @@
     },
 
     _ourSelectAndTheirSelect: function (theirSelect) {
-      var that = this;
+      var self = this;
 
       return function (event, ui) {
-        var ourCall = that._select.apply(that, [event, ui]),
-          theirCall;
+        var ourCall = self._select.apply(self, [event, ui]),
+            theirCall;
 
         if (theirSelect && typeof theirSelect === 'function') {
           theirCall = theirSelect.call();
