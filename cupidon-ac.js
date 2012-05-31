@@ -79,14 +79,18 @@
     },
 
     _reset: function () {
+      this._unwrap();
       this.options.token.hide();
       this.element.val('');
       this.element.removeAttr('data-token');
-      this.element.unwrap();
+    },
+
+    _unwrap: function () {
+      if(this.options.token.is(':visible')) this.element.unwrap();
     },
 
     destroy: function () {
-      this.element.unwrap();
+      this._unwrap();
       this.options.token.remove();
       $.ui.autocomplete.prototype.destroy.call(this);
     }
