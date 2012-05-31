@@ -27,7 +27,7 @@
       var token = this.element.data('ac-token'),
           value = this.element.val();
 
-      if (value !== '' && token && token !== '') {
+      if (value && token) {
         this._label(token);
       } else {
         this._reset();
