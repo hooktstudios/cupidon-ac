@@ -2,17 +2,17 @@
 <html>
   <head>
     <title>Cupidon Examples</title>
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/flick/jquery-ui.css" rel="stylesheet" type="text/css">
 
     <style>
+      html {
+        background-color: whitesmoke;
+      }
       body {
         font-family: helvetica, arial;
-        font-size: 1em;
-      }
-
-      .input {
-        margin-bottom: 30px;
-        min-height: 60px;
+        margin: 0 auto;
+        width: 600px;
+        color: #333
       }
 
       label {
@@ -31,8 +31,12 @@
                 border-radius: 3px;
       }
 
+      .input {
+        margin-bottom: 30px;
+        min-height: 78px;
+      }
+
       .ac-token {
-        color: #333
         font-size: 1.3em;
       }
 
@@ -45,7 +49,7 @@
 
     <script>
       $(function() {
-        var options = [{label: "Ruby", value: 1}, {label: "Javascript", value: 2}, {label: "Python", value: 3}];
+        var options = [{label: "Ruby", value: 1}, {label: "JavaScript", value: 2}, {label: "Python", value: 3}];
         $('#input1').cupidon({
           source: options
         });
@@ -71,7 +75,9 @@
 
     <h1>Cupidon Examples</h1>
 
-    <p>All examples are using Python, Javascript and Python as valid tokens.</p>
+    <p>All examples are using 3 valid tokens: <strong>Python</strong>, <strong>JavaScript</strong> and <strong>Ruby</strong>.</p>
+
+    <p>The examples are pretty straightforward, look at the source and get inspired!</p>
 
     <div class="input">
       <label for="input1">Example 1: empty value at load with select callback</label>

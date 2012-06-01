@@ -2,8 +2,7 @@
 Cupidon Autocompleter (a.k.a. cupidon-ac) is a simple jQuery UI widget that wraps the jQuery UI Autocomplete plugin to add a simple "must match" feature, ensuring the user selects a value that comes from the source. 
 
 ## Demo
-
-TODO
+[→ here](http://hooktstudios.github.com/cupidon-ac/examples.html)
 
 ## Usage
 
@@ -39,6 +38,7 @@ Basically mimicks the behaviour of a `select` tag with an arbitrary source
 * Does not accept values that are not in the `source`,
 * Shows the selected value at load without any additionnal HTTP request,
 * Supports key-value pairs (just like `select` tags).
+* Tested ([here](http://hooktstudios.github.com/cupidon-ac/test.html))
 
 ## Options
 * `changeText`: specify the text to use for the `edit` link
