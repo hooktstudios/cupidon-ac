@@ -55,11 +55,11 @@
 
         test("Cupidonize on page load when input is already filled", function() {
           var cup = cupidonize('#input1');
-          deepEqual(cup.html(), '<p>Test</p><a class="edit" href="#">Edit</a>', "No options");
+          deepEqual(cup.html(), '<span>Test</span><a class="edit" href="#">Edit</a>', "No options");
           deepEqual(cup.value(), '1', "Keep value");
 
           var cup = cupidonize('#input1-2', {changeText: 'Modify'});
-          deepEqual(cup.html(), '<p>Test</p><a class="edit" href="#">Modify</a>', "changeText option");
+          deepEqual(cup.html(), '<span>Test</span><a class="edit" href="#">Modify</a>', "changeText option");
         });
 
         test("Don't cupidonize on page load when input is partially filled", function() {
@@ -91,7 +91,7 @@
 
           cup.selectFirstMatch('Bo');
           deepEqual(cup.isInputVisible(), false, 'Input is hidden');
-          deepEqual(cup.html(), '<p>Bob</p><a class="edit" href="#">Edit</a>', 'HTML');
+          deepEqual(cup.html(), '<span>Bob</span><a class="edit" href="#">Edit</a>', 'HTML');
           deepEqual(cup.value(), '6', 'Value');
         });
 

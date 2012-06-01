@@ -4,7 +4,7 @@
   $.widget("ui.cupidon", $.ui.autocomplete, {
     options: {
       changeText: 'Edit',
-      token: '<div class="ac-token"><p></p><a class="edit" href="#"></a></div>'
+      token: '<div class="ac-token"><span></span><a class="edit" href="#"></a></div>'
     },
 
     _create: function () {
@@ -44,7 +44,7 @@
     _label: function (label) {
       this.element.wrap('<span style="display: none;"></span>');
       this.options.token.show();
-      this.options.token.find('p').html(label);
+      this.options.token.find('span').html(label);
     },
 
     _ourSelectAndTheirSelect: function (theirSelect) {
