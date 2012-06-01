@@ -3,25 +3,66 @@
   <head>
     <title>Cupidon Examples</title>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css">
+
+    <style>
+      body {
+        font-family: helvetica, arial;
+        font-size: 1em;
+      }
+
+      .input {
+        margin-bottom: 30px;
+        min-height: 60px;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        font-size: 1.3em;
+        line-height: 1.8em;
+      }
+
+      input {
+        font-size: 1.3em;
+        font-weight: normal;
+        border: 1px solid #cccccc;
+        -webkit-border-radius: 3px;
+           -moz-border-radius: 3px;
+                border-radius: 3px;
+      }
+
+      .ac-token {
+        color: #333
+        font-size: 1.3em;
+      }
+
+    </style>
+    <link href="cupidon-ac.css" rel="stylesheet" type="text/css">
+
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.js"></script>
     <script type="text/javascript" src="cupidon-ac.js"></script>
 
     <script>
       $(function() {
+        var options = [{label: "Ruby", value: 1}, {label: "Javascript", value: 2}, {label: "Python", value: 3}];
         $('#input1').cupidon({
-          source: [{label: "Anna", value: 5}, {label: "Bob", value: 6}, {label: "Charles", value: 7}],
+          source: options
         });
 
         $('#input1').cupidon('option', 'select', function () {
           console.log("Hello from client's select callback");
         });
 
-        $('#input2').cupidon();
-        $('#input3').cupidon({changeText: 'I am a button'});
-        $('#input4').cupidon({
-          source: [{label: "Ten", value: 10}, {label: "One hundred", value: 100}, {label: "One thousand", value: 1000}]
+        $('#input2').cupidon({
+          source: options
         });
+
+        $('#input3').cupidon({
+          changeText: 'I am a button',
+          source: options
+        });
+
       });
     </script>
 
@@ -30,9 +71,22 @@
 
     <h1>Cupidon Examples</h1>
 
-    <input id="input1" type="text" value="">
-    <input id="input2" type="text" data-ac-token="The art of computer programming" value="0-201-03801-3">
-    <input id="input3" type="text" data-ac-token="10$" value="10">
-    <input id="input4" type="text" data-ac-token="One hundred" value="100">
+    <p>All examples are using Python, Javascript and Python as valid tokens.</p>
+
+    <div class="input">
+      <label for="input1">Example 1: empty value at load with select callback</label>
+      <input id="input1" type="text" value="">
+    </div>
+
+    <div class="input">
+      <label for="input2">Example 2: selected value at load</label>
+      <input id="input2" type="text" data-ac-token="Ruby" value="1">
+    </div>
+
+    <div class="input">
+      <label for="input3">Example 3: custom text for the change button</label>
+      <input id="input3" type="text" data-ac-token="Python" value="3">
+    </div>
+
   </body>
 </html>
