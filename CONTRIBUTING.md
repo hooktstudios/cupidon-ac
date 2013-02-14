@@ -22,6 +22,12 @@ Please follow theses simples steps to contribute to this project :
 
 Simply open `test.html` in your browser.
 
+Or run it like travis-ci :
+
+    sudo npm install -g grunt
+    sudo npm install -g phantomjs
+    grunt test --verbose --force
+
 ## Syntax
 
 Follow [JSLint](http://www.jslint.com/lint.html) by Douglas Crockford, existing code and common sense.

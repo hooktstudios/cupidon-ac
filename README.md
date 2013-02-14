@@ -1,5 +1,8 @@
 # Cupidon Autocompleter 0.1
-Cupidon Autocompleter (a.k.a. cupidon-ac) is a simple jQuery UI widget that wraps the jQuery UI Autocomplete plugin to add a simple "must match" feature, ensuring the user selects a value that comes from the source. 
+
+> Cupidon Autocompleter (a.k.a. cupidon-ac) is a simple jQuery UI widget that wraps the jQuery UI Autocomplete plugin to add a simple "must match" feature, ensuring the user selects a value that comes from the source. 
+
+[![Build Status](https://travis-ci.org/hooktstudios/cupidon-ac.png?branch=master)](https://travis-ci.org/hooktstudios/cupidon-ac)
 
 ## Demo
 [→ here](http://hooktstudios.github.com/cupidon-ac/examples.html)
