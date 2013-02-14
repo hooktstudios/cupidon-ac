@@ -43,11 +43,15 @@ Basically mimicks the behaviour of a `select` tag with an arbitrary source
 ## Options
 * `changeText`: specify the text to use for the `edit` link
 
-## Contribute
-Feel free to send pull requests for any bugs / improvements / features.
+## Contributing
+Use [GitHub issues](https://github.com/hooktstudios/cupidon-ac/issues) for questions, issues and feature requests
 
-## Questions? Feature request?
-Use the [GitHub issues](https://github.com/hooktstudios/cupidon-ac/issues).
+See [CONTRIBUTING.md](https://github.com/hooktstudios/cupidon-ac/blob/master/CONTRIBUTING.md) for more details on contributing and running test.
+
+## Credits
+![hooktstudios](http://hooktstudios.com/logo.png)
+
+cupidon-ac is maintained and funded by [hooktstudios](http://github.com/hooktstudios)
 
 ## License
-Cupidon Autocompleter is published under the [MIT License](https://raw.github.com/hooktstudios/cupidon-ac/master/LICENSE). Credits for the first version goes to [Hookt Studios](http://www.hooktstudios.com)
+cupidon-ac is published under the [MIT License](https://raw.github.com/hooktstudios/cupidon-ac/master/LICENSE).
