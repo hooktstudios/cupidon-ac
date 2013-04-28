@@ -1,0 +1,7 @@
+{
+  "name": "cupidon-ac",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "grunt test --verbose"
+  }
+}
