@@ -5,6 +5,7 @@
 widget with a "must match" feature.
 
 [![Build Status](https://travis-ci.org/hooktstudios/cupidon-ac.png?branch=master)](https://travis-ci.org/hooktstudios/cupidon-ac)
+[![NPM version](https://badge.fury.io/js/cupidon-ac.png)](https://npmjs.org/package/cupidon-ac)
 
 ## Demo
 [→ here](http://hooktstudios.github.com/cupidon-ac/examples.html)
