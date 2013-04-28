@@ -1,6 +1,8 @@
-# Cupidon Autocompleter 0.1
+# cupidon-ac
 
-> Cupidon Autocompleter (a.k.a. cupidon-ac) is a simple jQuery UI widget that wraps the jQuery UI Autocomplete plugin to add a simple "must match" feature, ensuring the user selects a value that comes from the source. 
+> Cupidon Autocompleter (a.k.a. cupidon-ac) is an extended
+[jQuery UI Autocomplete](http://jqueryui.com/autocomplete/)
+widget with a "must match" feature.
 
 [![Build Status](https://travis-ci.org/hooktstudios/cupidon-ac.png?branch=master)](https://travis-ci.org/hooktstudios/cupidon-ac)
 
@@ -8,6 +10,8 @@
 [→ here](http://hooktstudios.github.com/cupidon-ac/examples.html)
 
 ## Usage
+
+Cupidon Autocompleter ensure the user selects a value that comes from your source list.
 
 ### Empty input
 ```html
@@ -47,7 +51,7 @@ Basically mimicks the behaviour of a `select` tag with an arbitrary source
 * `changeText`: specify the text to use for the `edit` link
 
 ## Contributing
-Use [GitHub issues](https://github.com/hooktstudios/cupidon-ac/issues) for questions, issues and feature requests
+Use [GitHub issues](https://github.com/hooktstudios/cupidon-ac/issues) for questions, issues and feature requests.
 
 See [CONTRIBUTING.md](https://github.com/hooktstudios/cupidon-ac/blob/master/CONTRIBUTING.md) for more details on contributing and running test.
 
@@ -55,6 +59,3 @@ See [CONTRIBUTING.md](https://github.com/hooktstudios/cupidon-ac/blob/master/CON
 ![hooktstudios](http://hooktstudios.com/logo.png)
 
 cupidon-ac is maintained and funded by [hooktstudios](http://github.com/hooktstudios)
-
-## License
-cupidon-ac is published under the [MIT License](https://raw.github.com/hooktstudios/cupidon-ac/master/LICENSE).
