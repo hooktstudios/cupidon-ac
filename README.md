@@ -7,6 +7,10 @@ widget with a "must match" feature.
 [![Build Status](https://travis-ci.org/hooktstudios/cupidon-ac.png?branch=master)](https://travis-ci.org/hooktstudios/cupidon-ac)
 [![NPM version](https://badge.fury.io/js/cupidon-ac.png)](https://npmjs.org/package/cupidon-ac)
 
+## *Please read this!*
+
+More robust & complete solutions now exists, take a look at [select2][select2] and [chosen][chosen].
+
 ## Demo
 [→ here](http://hooktstudios.github.com/cupidon-ac/examples.html)
 
@@ -60,3 +64,6 @@ See [CONTRIBUTING.md](https://github.com/hooktstudios/cupidon-ac/blob/master/CON
 ![hooktstudios](http://hooktstudios.com/logo.png)
 
 cupidon-ac is maintained and funded by [hooktstudios](http://github.com/hooktstudios)
+
+[chosen]: http://harvesthq.github.io/chosen/
+[select2]: http://ivaynberg.github.io/select2/
